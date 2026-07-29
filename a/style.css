@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #0a1a0f;
+  --bg-mid: #0d2a18;
+  --gold: #f5d76e;
+  --gold-bright: #ffe566;
+  --gold-dark: #c9a227;
+  --text: #f0f4e8;
+  --text-muted: #a8b89a;
+  --card: rgba(10, 30, 18, 0.85);
+  --border: #d4af37;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: 
+    radial-gradient(ellipse at top, #143d28 0%, var(--bg-dark) 60%),
+    linear-gradient(180deg, #0a1a0f, #051008);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.app {
+  width: 100%;
+  max-width: 720px;
+}
+
+.frame {
+  background: linear-gradient(180deg, #0f2a1a 0%, #0a1f12 100%);
+  border: 4px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px 40px;
+  box-shadow: 
+    0 0 40px rgba(212, 175, 55, 0.15),
+    inset 0 0 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.trophy {
+  font-size: 42px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 12px rgba(245, 215, 110, 0.5));
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold-bright);
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(245, 215, 110, 0.35);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Content */
+.narrative {
+  font-size: 16px;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--gold-dark);
+  margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  background: #111;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+.scene-text {
+  font-size: 15.5px;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.65;
+}
+
+/* Choices */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.choice-btn {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  color: #1a1a0a;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(245, 215, 110, 0.3);
+  min-width: 200px;
+}
+
+.choice-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(245, 215, 110, 0.45);
+  background: linear-gradient(180deg, #fff0a0, var(--gold-bright));
+}
+
+.choice-btn:active {
+  transform: translateY(-1px);
+}
+
+.choice-btn.hidden {
+  display: none;
+}
+
+/* Result / final state */
+.final-reveal {
+  background: rgba(245, 215, 110, 0.08);
+  border: 1px solid rgba(245, 215, 110, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.final-reveal strong {
+  color: var(--gold-bright);
+}
+
+/* Restart */
+.restart-btn {
+  margin-top: 24px;
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+
+.restart-btn.visible {
+  display: inline-block;
+}
+
+.restart-btn:hover {
+  background: var(--gold);
+  color: #1a1a0a;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .frame {
+    padding: 24px 18px 32px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .choice-btn {
+    min-width: 100%;
+    padding: 14px 20px;
+  }
+
+  .narrative, .scene-text {
+    font-size: 15px;
+  }
+}
