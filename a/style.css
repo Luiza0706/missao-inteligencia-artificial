@@ -134,12 +134,12 @@ h1 {
 }
 
 .subtitle::before {
-  content: '✦ ';
+  content: ' ';
   color: var(--cyan);
 }
 
 .subtitle::after {
-  content: ' ✦';
+  content: ' ';
   color: var(--magenta);
 }
 
